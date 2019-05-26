@@ -1,0 +1,75 @@
+Room Name: Room 1
+Room Description:  This is Jurassic Park <br>
+Exit Rooms: N-Entrance
+Room Name: Entrance
+Room Description:  This is the arenas entrance
+Exit Rooms: S-Room 1, N-Foyer
+Room Name: Foyer
+Room Description:  You are now in the Foyer.
+Exit Rooms: S-Entrance, W-Ticket Office, N-Arena, E-Players Lounge
+Room Name: Ticket Office
+Room Description:  You are now in the Ticket Office.
+Exit Rooms: E-Foyer
+Room Name: Players Lounge
+Room Description:  You are now in the Players Lounge.
+Exit Rooms: W-Foyer, N-Locker Room, E-Head Coach Locker
+Room Name: Head Coach Locker
+Room Description:  You are now in the Head Coach Locker.
+Exit Rooms: W-Players Lounge
+Room Name: Locker Room
+Room Description:  You are now in the Locker Room
+Exit Rooms: S-Players Lounge, W-Arena
+Room Name: Arena
+Room Description:  You are now in the Arena
+Exit Rooms: E-Locker Room, S-Foyer, N-Office Foyer, W-Tunnel
+Room Name: Office Foyer
+Room Description:  You are now in the Office Foyer
+Exit Rooms: S-Arena, E-Coaches Office, N-General Managers Office
+Room Name: Coaches Office
+Room Description:  You are now in the Coaches Office
+Exit Rooms: W-Office Foyer,
+Room Name: General Managers Office
+Room Description:  You are now in the GM's Office
+Exit Rooms: S-Office Foyer,
+Room Name: Tunnel
+Room Description:  You are now in the Tunnel
+Exit Rooms: E-Arena, N-Storage Room
+Room Name: Storage Room 
+Room Description:  You are now in the Storage
+Exit Rooms: S-Tunnel, D-Storage Basement
+Room Name: Storage Basement
+Room Description:  You are now in the Storage Basement
+Exit Rooms: U-Storage Room, W-Phone Booth, N-Drakes Court
+Room Name: Phone Booth
+Room Description:  You are now in the Phone booth
+Exit Rooms: E-Storage Basement
+Room Name: Drakes Court
+Room Description:  You are now in the Drakes Court
+Exit Rooms: S-Storage Basement, N-Weight Room, W-OVO Store
+Room Name: OVO Store
+Room Description:  You are now in the OVO Store
+Exit Rooms: E-Drakes Court
+Room Name: Weight Room
+Room Description:  You are now in the Weight Room
+Exit Rooms: S-Drakes Court, E-Four Seasons Hotel, N-Video Game Room
+Room Name: Video Game Room
+Room Description:  You are now in the Video game room
+Exit Rooms: S-Weight Room
+Room Name: Four Seasons Hotel
+Room Description:  You are now in the Four Seasons Hotel
+Exit Rooms: W-Weight Room, U-2nd Floor
+Room Name: 2nd Floor
+Room Description:  You are now in the 2nd Floor
+Exit Rooms: D-Four Seasons Hotel, U-3rd Floor, E-Restaurant
+Room Name: 3rd Floor
+Room Description:  You are now in the 3rd Floor
+Exit Rooms: D-2nd Floor, E-Basketball Hall Of Fame
+Room Name: Restaurant
+Room Description:  You are now in the Restaurant
+Exit Rooms: W-2nd Floor
+Room Name: Basketball Hall Of Fame
+Room Description:  You are now in the Basketball Hall of Fame
+Exit Rooms: W-3rd Floor, S-Celebrity Vault
+Room Name: Celebrity Vault
+Room Description:  You are now in the Celebrity Vault
+Exit Rooms: N-Basketball Hall Of Fame
