@@ -158,21 +158,38 @@ import java.util.Scanner;
 	            return false;
 	        }
 	        String commandWord = command.getCommandWord();
+	        boolean finished = false;
 	        if (commandWord.equals("help"))
 	            printHelp();
 	        else if (commandWord.equals("go"))
 	            goRoom(command);
 	        else if (commandWord.equals("pickup") || commandWord.equals("take")) {
-	        	pickup(command);
+	        	finished = pickup(command);
 	        } else if (commandWord.equals("drop")) {
 	        	drop(command);
 	        } else if (commandWord.equals("inventory") || (commandWord.equals("i"))) {
 	        	inventory();
-	        } else if (commandWord.equals("show")) {
+	        } else if (commandWord.equals("show") || commandWord.equals("give")) {
 	        	show(command);
+	        } else if (commandWord.equals("read")) {
+	        	read(command);
+	        } else if (commandWord.equals("look") || commandWord.equals("examine")) {
+	        	look(command);
+	        } else if (commandWord.equals("say")) {
+	        	say(command);
+	        } else if (commandWord.equals("type") || commandWord.equals("enter")) {
+	        	enter(command);
 	        } else if (commandWord.equals("unlock")) {
 	        	unlock(command);
-	        }
+	        } else if (commandWord.equals("insert")) {
+	        	insert(command);
+	        } else if (commandWord.equals("climb")) {
+	        	climb(command);
+	        } else if (commandWord.equals("throw")) {
+	        	toss(command);
+	        } else if (commandWord.equals("drink")) {
+	        	drink(command);
+	        } 
 	        else if (commandWord.equals("quit"))
 	        {
 	            if(command.hasSecondWord())
@@ -182,22 +199,115 @@ import java.util.Scanner;
 	        }else if (commandWord.equals("eat")){
 	        	System.out.println("Do you really think you should be eating at a time like this?");
 	        }
-	        return false;
+	        return finished;
 	    }
 	// implementations of user commands:
-	    private void unlock(Command command) {
-	    	if (command.hasSecondWord() && command.getSecondWord().equals("pass") && hasInventory("pass") && currentRoom.getRoomName().toLowerCase().equals("foyer")) {
-	    		System.out.println("The door is now unlocked");
+	    private void climb(Command command) {
+	    	if (command.hasSecondWord() && command.getSecondWord().toLowerCase().equals("ladder") && currentRoom.getRoomName().equals("Storage")) {
 	    		try {
-	    			currentRoom.setExit('E', masterRoomMap.get("PLAYERS_LOUNGE"));
-		    		currentRoom.removeItem("door");
-		    		removeItem("pass");
+	    			currentRoom = masterRoomMap.get("STORAGE_BASEMENT");
 		    		System.out.println(currentRoom.longDescription());
 	    		} catch (Exception e) {
 	    			// this should never be thrown
 	    		}
+	    	} else {
+	    		System.out.println("There's nothing here to climb");
 	    	}
 	    }
+	    
+	    private void enter(Command command) {
+	    	if (command.hasSecondWord() && command.getSecondWord().toLowerCase().equals("6870") && currentRoom.getRoomName().equals("Foyer")) {
+	    		System.out.println("The code is correct. Your path to the east is open");
+	    		try {
+	    			currentRoom.setExit('E', masterRoomMap.get("PLAYERS_LOUNGE"));
+		    		currentRoom.removeItem("door");
+		    		System.out.println(currentRoom.longDescription());
+	    		} catch (Exception e) {
+	    			// this should never be thrown
+	    		}
+	    	} else if(command.hasSecondWord() && currentRoom.getRoomName().equals("Foyer")) {
+	    		System.out.println("Incorrect Code");
+	    	} else {
+	    		System.out.println("I don't know how to do that");
+	    	}
+	    }
+	    private void say(Command command) {
+	    	if (command.hasSecondWord() && command.getSecondWord().toLowerCase().equals("kawhi") && currentRoom.getRoomName().toLowerCase().equals("four seasons hotel")) {
+	    		System.out.println("The guard is letting you go up to the 2nd floor");
+	    		currentRoom = masterRoomMap.get("2ND_FLOOR");
+	    		System.out.println(currentRoom.longDescription());
+	    		return;
+	    	} else if(command.hasSecondWord() && currentRoom.getRoomName().equals("Four Seasons Hotel")) {
+	    		System.out.println("The security guard says that is the incorrect password");
+	    	} else {
+	    		System.out.println(command.getSecondWord());
+	    	}
+	    }
+	    private void read(Command command) {
+	    	if (command.hasSecondWord() && (command.getSecondWord().equals("paper") || command.getSecondWord().equals("note"))) {
+	    		look(command);
+	    	} else {
+	    		System.out.println("I don't know how to read that");
+	    	}
+	    }
+	    private void insert (Command command) {
+	    	if (command.hasSecondWord() && command.getSecondWord().equals("key") && currentRoom.getRoomName().equals("Tunnel") && hasInventory("key") && currentRoom.itemInRoom("LockedDoor")) {
+	    		unlockDoor();
+	    	} else {
+	    		System.out.println("I don't understand how to do that");
+	    	}
+	    }
+	    private void unlockDoor() {
+	    	System.out.println("The door unlocks");
+    		try {
+    			Room r = masterRoomMap.get("STORAGE");
+    			currentRoom.setExit('N', masterRoomMap.get("STORAGE"));
+	    		currentRoom.removeItem("LockedDoor");
+	    		Item item = new Item("UnlockedDoor", "An unlocked door to the north");
+	    		currentRoom.addItem(item);
+	    		System.out.println(currentRoom.longDescription());
+    		} catch (Exception e) {
+    			// this should never be thrown
+    		}
+	    }
+	    private void unlock(Command command) {
+	    	if (command.hasSecondWord() && command.getSecondWord().equals("door") && currentRoom.getRoomName().equals("Tunnel") && hasInventory("key") && currentRoom.itemInRoom("LockedDoor")) {
+	    		unlockDoor();
+	    	} else {
+	    		System.out.println("I don't understand how to do that");
+	    	}
+	    }
+	    
+	    private void look(Command command) {
+	    	if (!command.hasSecondWord() || command.getSecondWord().equals("around")) {
+	    		System.out.println(currentRoom.longDescription());
+	    		return;
+	    	} 
+	    	if (command.hasSecondWord()) {
+	    		String word = command.getSecondWord();
+	    		if (word.equals("paper") && (hasInventory("paper") || currentRoom.itemInRoom("paper"))) {
+		    		System.out.println("The paper says:");
+		    		System.out.println("0, 8, 7, 6");
+		    		System.out.println("Lowest number divisible by 10 and 7");
+		    		
+		    	} else if (word.equals("note") && (hasInventory("note") || currentRoom.itemInRoom("note"))) {
+		    		System.out.println("The note says:");
+		    		System.out.println("Keep working through these Algorithms, maybe you Will win this game sooner or later, Having a fun time playing It");
+		    	} 
+	    		else {
+		    		System.out.println("I don't see that here");
+		    	}
+	    	}
+	    	
+	    }
+	   private void drink(Command command) {
+		   if (command.hasSecondWord() && (command.getSecondWord().equals("water") || command.getSecondWord().equals("bottle")) && hasInventory("Bottle")) {
+			   System.out.println("Ahhhhhh. Refreshing");
+		   } else {
+			   System.out.println("I can't drink that");
+		   }
+	   }
+	    
 	    private void show(Command command) {
 	    	if (command.hasSecondWord() && command.getSecondWord().equals("ticket") && hasInventory("ticket") && currentRoom.getRoomName().toLowerCase().equals("foyer")) {
 	    		System.out.println("The usher is letting you enter the arena");
@@ -232,6 +342,7 @@ import java.util.Scanner;
 	    	}
 	    	return false;
 	    }
+	  
 	    private void inventory() {
 	    	System.out.println("You are carrying:");
 	    	
@@ -239,27 +350,42 @@ import java.util.Scanner;
 	    		System.out.println(inventory.get(i).getDescription());
 	    	}
 	    }
-	    private void pickup(Command command) 
+	    private boolean pickup(Command command) 
 	    {
 	        if(!command.hasSecondWord())
 	        {
 	            // if there is no second word, we don't know where to go...
 	            System.out.println("Pickup What?");
-	            return;
+	            return false;
 	        }
 	        String itemName = command.getSecondWord();
 	        Item item = currentRoom.removeItem(itemName);
 	        if (item == null) {
 	        	System.out.println("I don't know what you want to pickup");
+	        } else if ((currentRoom.getRoomName().equals("Tunnel") && command.getSecondWord().equals("door")) || 
+	        		  (currentRoom.getRoomName().equals("Storage") && command.getSecondWord().equals("ladder")) || 
+	        		  (currentRoom.getRoomName().equals("Foyer") && command.getSecondWord().equals("chair")) ||
+	        		  (currentRoom.getRoomName().equals("Foyer") && command.getSecondWord().equals("usher"))){
+	        	System.out.println("You can't take that");
 	        } else {
 	        	if (inventory.size() < 7) {
 	        		addItem(item);
+	        		if (hasInventory("trophy")) {
+	        			System.out.println("YOU WIN!!!");
+	        			return true;
+	        		}
 	        		System.out.println(currentRoom.longDescription());
 	        	} else {
 	        		System.out.println("That's too much to carry");
 	        	}
 	        }
-	        
+	        return false;
+	    }
+	    private void toss(Command command) {
+	    	if(currentRoom.getRoomName().equals("Foyer") && hasInventory("basketball")) {
+	    		System.out.println("The usher is not impressed");
+	    	} 
+	    	drop(command);
 	    }
 	    private void drop(Command command) {
 	        if(!command.hasSecondWord())
@@ -277,9 +403,6 @@ import java.util.Scanner;
 	        	System.out.println(currentRoom.longDescription());
 	        }
 	        
-	    }
-	    private void getRoom(String roomName) {
-	    	
 	    }
 	/** 
 	     * Try to go to one direction. If there is an exit, enter the new
