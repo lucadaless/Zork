@@ -278,11 +278,7 @@ import java.util.Scanner;
 	    	}
 	    }
 	    
-	    private void look(Command command) {
-	    	if (!command.hasSecondWord() || command.getSecondWord().equals("around")) {
-	    		System.out.println(currentRoom.longDescription());
-	    		return;
-	    	} 
+	  
 	    	if (command.hasSecondWord()) {
 	    		String word = command.getSecondWord();
 	    		if (word.equals("paper") && (hasInventory("paper") || currentRoom.itemInRoom("paper"))) {
