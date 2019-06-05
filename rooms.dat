@@ -3,7 +3,7 @@ Room Description:  This is Jurassic Park <br>
 Exit Rooms: N-Entrance
 Items: Basketball-Basketball
 Room Name: Entrance
-Room Description:  This is the arenas entrance
+Room Description:  You are at the entrance to the ScotiaBank Arena. Welcome.
 Exit Rooms: S-Room 1, N-Foyer
 Items:
 Room Name: Foyer
@@ -15,19 +15,19 @@ Room Description:  You are now in the Ticket Office.
 Exit Rooms: E-Foyer
 Items: Ticket-Admission Ticket
 Room Name: Players Lounge
-Room Description:  You are now in the Players Lounge.
+Room Description:  You are now in the Raptors Players Lounge.
 Exit Rooms: W-Foyer, N-Locker Room, E-Head Coach Locker
 Items:
 Room Name: Head Coach Locker
-Room Description:  You are now in the Head Coach Locker. 
+Room Description:  You are now in the Head Coach Locker Room. 
 Exit Rooms: W-Players Lounge
 Items: Key-Jagged Key
 Room Name: Locker Room
-Room Description:  You are now in the Locker Room
+Room Description:  You are now in the Toronto Raptors Locker Room
 Exit Rooms: S-Players Lounge, W-Arena
 Items: Headband-Headband
 Room Name: Arena
-Room Description:  You are now in the Arena
+Room Description:  You are now courtside in the Arena
 Exit Rooms: E-Locker Room, S-Foyer, N-Office Foyer, W-Tunnel
 Items: Paper-A Small Piece Of Paper
 Room Name: Office Foyer
@@ -39,15 +39,15 @@ Room Description:  You are now in the Coaches Office
 Exit Rooms: W-Office Foyer,
 Items: DVD-DVD
 Room Name: General Managers Office
-Room Description:  You are now in the GM's Office
+Room Description:  You are now in the General Managers Office
 Exit Rooms: S-Office Foyer,
 Items: Notebook-Notebook, Contract-Blank Contract
 Room Name: Tunnel
 Room Description:  You are now in the Tunnel
 Exit Rooms: E-Arena, N-Storage Room
-Items: LockedDoor-A Locked Door prevents you from going north
+Items: LockedDoor-A Locked Door prevents you from going north!
 Room Name: Storage  
-Room Description:  You are now in the Storage Room
+Room Description:  You are now in the Storage Room, wander further?
 Exit Rooms: S-Tunnel
 Items: Ladder-Large Ladder
 Room Name: Storage Basement
@@ -59,19 +59,19 @@ Room Description:  You are now in the Phone booth
 Exit Rooms: E-Storage Basement
 Items: Telephone-Telephone
 Room Name: Drakes Court
-Room Description:  You are now in the Drakes Court
+Room Description:  You are now at Drakes Personal Court
 Exit Rooms: S-Storage Basement, N-Weight Room, W-OVO Store
 Items: 
 Room Name: OVO Store
-Room Description:  You are now in the OVO Store
+Room Description:  You are now in the OVO Store, hope you brought your wallet.
 Exit Rooms: E-Drakes Court
 Items: Headphones-Headphones, Note-Sticky Note
 Room Name: Weight Room
-Room Description:  You are now in the Weight Room
+Room Description:  You are now in the Weight Room, 
 Exit Rooms: S-Drakes Court, E-Four Seasons Hotel, N-Video Game Room
 Items: Dumbells-Dumbells, Poster-Kawhi Leonard Poster
 Room Name: Video Game Room
-Room Description:  You are now in the Video game room
+Room Description:  You are now in the (Text-Based) Video game room, ironic?
 Exit Rooms: S-Weight Room
 Items: Game-Video Game, Xbox-Xbox
 Room Name: Four Seasons Hotel
@@ -79,11 +79,11 @@ Room Description:  You are now in the Four Seasons Hotel. There is a security gu
 Exit Rooms: W-Weight Room
 Items: Bottle-Water Bottle, Plant-Dead Plant
 Room Name: 2nd Floor
-Room Description:  You are now in the 2nd Floor
+Room Description:  You have arrived at the 2nd Floor
 Exit Rooms: D-Four Seasons Hotel, U-3rd Floor, E-Restaurant
 Items:
 Room Name: 3rd Floor
-Room Description:  You are now in the 3rd Floor
+Room Description:  You have arrived at the 3rd Floor
 Exit Rooms: D-2nd Floor, E-Basketball Hall Of Fame
 Items:
 Room Name: Restaurant
