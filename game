@@ -250,12 +250,7 @@ import java.util.Scanner;
 	    		System.out.println("I don't know how to read that");
 	    	}
 	    }
-	    private void insert (Command command) {
-	    	if (command.hasSecondWord() && command.getSecondWord().equals("key") && currentRoom.getRoomName().equals("Tunnel") && hasInventory("key") && currentRoom.itemInRoom("LockedDoor")) {
-	    		unlockDoor();
-	    	} else {
-	    		System.out.println("I don't understand how to do that");
-	    	}
+	   
 	    }
 	    private void unlockDoor() {
 	    	System.out.println("The door unlocks");
@@ -263,11 +258,10 @@ import java.util.Scanner;
     			Room r = masterRoomMap.get("STORAGE");
     			currentRoom.setExit('N', masterRoomMap.get("STORAGE"));
 	    		currentRoom.removeItem("LockedDoor");
-	    		Item item = new Item("UnlockedDoor", "An unlocked door to the north");
+	    		Item item = new Item("UnlockedDoor", "A door to the north is unlocked");
 	    		currentRoom.addItem(item);
 	    		System.out.println(currentRoom.longDescription());
     		} catch (Exception e) {
-    			// this should never be thrown
     		}
 	    }
 	    private void unlock(Command command) {
@@ -277,7 +271,11 @@ import java.util.Scanner;
 	    		System.out.println("I don't understand how to do that");
 	    	}
 	    }
-	    
+	     private void look(Command command) {
+	    	if (!command.hasSecondWord() || command.getSecondWord().equals("around")) {
+	    		System.out.println(currentRoom.longDescription());
+	    		return;
+	    	} 
 	  
 	    	if (command.hasSecondWord()) {
 	    		String word = command.getSecondWord();
