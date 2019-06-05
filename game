@@ -159,7 +159,48 @@ import java.util.Scanner;
 	        }
 	        String commandWord = command.getCommandWord();
 	        boolean finished = false;
-	        
+	        if (commandWord.equals("help"))
+	            printHelp();
+	        else if (commandWord.equals("go"))
+	            goRoom(command);
+	        else if (commandWord.equals("pickup") || commandWord.equals("take")) {
+	        	finished = pickup(command);
+	        } else if (commandWord.equals("drop")) {
+	        	drop(command);
+	        } else if (commandWord.equals("inventory") || (commandWord.equals("i"))) {
+	        	inventory();
+	        } else if (commandWord.equals("show") || commandWord.equals("give")) {
+	        	show(command);
+	        } else if (commandWord.equals("read")) {
+	        	read(command);
+	        } else if (commandWord.equals("look") || commandWord.equals("examine")) {
+	        	look(command);
+	        } else if (commandWord.equals("say")) {
+	        	say(command);
+	        } else if (commandWord.equals("type") || commandWord.equals("enter")) {
+	        	enter(command);
+	        } else if (commandWord.equals("unlock")) {
+	        	unlock(command);
+	        } else if (commandWord.equals("insert")) {
+	        	insert(command);
+	        } else if (commandWord.equals("climb")) {
+	        	climb(command);
+	        } else if (commandWord.equals("throw")) {
+	        	toss(command);
+	        } else if (commandWord.equals("drink")) {
+	        	drink(command);
+	        } 
+	        else if (commandWord.equals("quit"))
+	        {
+	            if(command.hasSecondWord())
+	                System.out.println("Quit what?");
+	            else
+	                return true;  // signal that we want to quit
+	        }else if (commandWord.equals("eat")){
+	        	System.out.println("Do you really think you should be eating at a time like this?");
+	        }
+	        return finished;
+	    }
 	// implementations of user commands:
 	    private void climb(Command command) {
 	    	if (command.hasSecondWord() && command.getSecondWord().toLowerCase().equals("ladder") && currentRoom.getRoomName().equals("Storage")) {
