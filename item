@@ -1,25 +1,29 @@
 package com.bayviewglen.isp;
-
+//Class used to create items in the game, which has meaning to the story.
 public class Item {
 	private String name;
 	private String description;
 	public Item() {
 		
 	}
+	//creates an item
 	public Item(String name, String description) {
 		this.name = name;
 		this.description = description;
 	}
-	
+	//retreives items name
 	public String getName() {
 		return name;
 	}
+	//sets items name
 	public void setName(String name) {
 		this.name = name;
 	}
+	//retreives item description
 	public String getDescription() {
 		return description;
 	}
+	//sets item description
 	public void setDescription(String description) {
 		this.description = description;
 	}
